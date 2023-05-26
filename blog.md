@@ -1,10 +1,9 @@
 ccxt explained
 
-public apis
-
-problems
-
 what this aricle 'll do
+we 'll implement ccxt with binance , bitmex and kucoin
+
+and see the difference
 
 set margin / leverage
 

@@ -27,8 +27,8 @@ class SampleStrategy(Strategy):
                 
             if not self.isInPosition("long"):
                 print("go long")
-                tp_price= float(row["close"] + (row["close"] * 0.03))
-                sl_price= float(row["close"] - (row["close"] * 0.03))
+                tp_price= float(row["close"]) - float(row["close"]) *self.strategy_params.get("sl_perc", 0.03)
+                sl_price= float(row["close"]) + float(row["close"]) * self.strategy_params.get("tp_perc", 0.03)
                 qty = self.getQty()
                 self.goLong(qty=qty,tp_price=tp_price,sl_price=sl_price)
 
@@ -38,8 +38,8 @@ class SampleStrategy(Strategy):
             
             if not self.isInPosition("short"):
                 print("go short")
-                tp_price=None
-                sl_price=None
+                tp_price= float(row["close"]) - float(row["close"]) *self.strategy_params.get("sl_perc", 0.03)
+                sl_price= float(row["close"]) + float(row["close"]) * self.strategy_params.get("tp_perc", 0.03)
                 qty = self.getQty()
                 self.goShort(qty=qty,tp_price=tp_price,sl_price=sl_price)
     
